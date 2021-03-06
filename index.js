@@ -3,6 +3,7 @@ const path = require('path')
 const fs = require('fs')
 const util = require('util')
 const textToSpeech = require('@google-cloud/text-to-speech')
+const tmp = require('tmp')
 const client = new Discord.Client()
 const ttsClient = new textToSpeech.TextToSpeechClient()
 const prefix = '!'
@@ -74,11 +75,9 @@ client.on('message', message => {
       connection.play(path.join(__dirname, 'sounds/initializing.ogg'))
       const workouts = await getWorkouts(args.slice(5))
       const dispatcher = connection.play(path.join(__dirname, 'sounds/start.ogg'))
-      dispatcher.on('start', () => console.log('Audio Started'))
       dispatcher.on('finish', async () => {
         function rounds (i) {
-          console.log('looking for', workouts[(i - 1) % workouts.length])
-          connection.play(path.join(__dirname, workouts[(i - 1) % workouts.length]))
+          connection.play(workouts[(i - 1) % workouts.length])
           setTimeout(() => connection.play(path.join(__dirname, 'sounds/high.ogg')), 2000)
           setTimeout(() => connection.play(path.join(__dirname, 'sounds/low.ogg')), high)
           setTimeout(() => {
@@ -110,11 +109,11 @@ const getWorkouts = async (workouts) => {
       audioConfig: { audioEncoding: 'OGG_OPUS' }
     }
 
+    const file = tmp.fileSync({ postfix: '.ogg' })
     const [res] = await ttsClient.synthesizeSpeech(req)
     const writeFile = util.promisify(fs.writeFile)
-    await writeFile(`sounds/workout-${i}.ogg`, res.audioContent, 'binary')
-    result.push(`sounds/workout-${i}.ogg`)
-    console.log(`got sound for ${workouts[i]}`)
+    await writeFile(file.name, res.audioContent, 'binary')
+    result.push(file.name)
   }
   return result
 }
