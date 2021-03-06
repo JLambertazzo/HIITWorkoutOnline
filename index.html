@@ -4,25 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Run group workouts with a single command">
+  <meta name="author" content="Julien Bertazzo Lambert">
+  <meta name="keywords" content="HIIT, Workout, Online, High-Intensity, Interval, Training, HTML, CSS, TailwindCSS, Deltahacks7">
   <title>HIIT Online Workout</title>
   <link rel="stylesheet" href="tailwind.css">
 </head>
 <body class="overflow-x-hidden">
-  <div class="flex flex-col justify-center items-center w-screen h-screen bg-purple-600">
-    <h1 class="text-7xl font-extrabold tracking-tight text-gray-100">HIIT Workout Online</h1>
-    <h2 class="text-3xl text-gray-200">Run group workouts with a single command.</h2>
-    <div class="space-x-3 my-8">
-      <a href="#" class="rounded-md shadow px-5 py-3 font-medium text-gray-100 bg-green-500 hover:bg-green-600">Try it Yourself</a>
-      <a href="#learn" class="rounded-md shadow px-5 py-3 font-medium text-purple-600 bg-gray-100 hover:bg-gray-200">Learn More</a>
+  <div class="flex flex-col justify-center w-screen h-screen bg-purple-600">
+    <h1 class="sm:text-7xl text-6xl md:text-center p-10 font-extrabold tracking-tight text-gray-100 w-full px-10">HIIT Workout Online</h1>
+    <h2 class="sm:text-3xl text-2xl md:text-center text-2xl text-gray-200 w-full px-10">Run group workouts with a single command.</h2>
+    <div class="sm:space-x-3 my-8 md:text-center px-10">
+      <a href="https://discord.com/oauth2/authorize?client_id=817632745127542794&scope=bot" target="_blank" rel="noreferrer" class="sm:inline block sm:my-0 my-1 rounded-md shadow px-5 py-3 font-medium text-gray-100 bg-green-500 hover:bg-green-600">Try it Yourself</a>
+      <a href="#learn" class="sm:inline block sm:my-0 my-1 rounded-md shadow px-5 py-3 font-medium text-purple-600 bg-gray-100 hover:bg-gray-200">Learn More</a>
     </div>
   </div>
-  <div id="learn" class="grid grid-cols-2 w-screen h-screen text-gray-900">
-    <div class="bg-gray-100 ml-14 mr-14 my-10 shadow-2xl p-5 space-y-3">
+  <div id="learn" class="md:grid md:grid-cols-2 flex flex-col w-screen h-screen text-gray-900">
+    <div class="bg-gray-100 sm:ml-14 md:mr-7 sm:mr-14 mx-7 my-10 shadow-2xl p-5 space-y-3">
       <h1 class="text-2xl font-bold">Install:</h1>
       <p class="text-lg font-semibold">Click 'Try it Yourself' above to add the bot to a server</p>
       <h2 class="text-2xl font-bold">Start a HIIT Workout:</h2>
       <p class="text-lg font-semibold">Enter the following command into your discord chat:</p>
-      <code class="bg-gray-300 p-0.5 text-gray-900 text-sm font-medium">!hiit #rounds #high #low [#warmup] [#cooldown]</code>
+      <code class="bg-gray-300 p-0.5 text-gray-900 text-sm font-semibold">!hiit #rounds #high #low [#warmup] [#cooldown]</code>
       <p class="text-lg font-semibold">Using the following arguments</p>
       <div class="rounded-lg shadow-md inline-block min-w-full">
         <table class="w-full table-auto leading-normal">
@@ -33,38 +36,38 @@
               <th class="text-left text-gray-100 p-1 rounded-tr-lg bg-purple-600">Example</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <tbody class="font-semibold text-left">
+            <tr class="bg-purple-100">
               <td>#rounds</td>
               <td>Number of Rounds</td>
-              <td>5</td>
+              <td class="text-center">5</td>
             </tr>
-            <tr>
+            <tr class="bg-purple-200">
               <td>#high</td>
               <td>Seconds of High-Intensity</td>
-              <td>45</td>
+              <td class="text-center">45</td>
             </tr>
-            <tr>
+            <tr class="bg-purple-100">
               <td>#low</td>
               <td>Seconds of Low-Intensity</td>
-              <td>15</td>
+              <td class="text-center">15</td>
             </tr>
-            <tr>
+            <tr class="bg-purple-200">
               <td>#warmup (optional)</td>
               <td>Seconds of Warmup</td>
-              <td>180</td>
+              <td class="text-center">180</td>
             </tr>
-            <tr>
-              <td>#cooldown (optional)</td>
+            <tr class="bg-purple-100">
+              <td class="rounded-bl-lg">#cooldown (optional)</td>
               <td>Seconds of Cooldown</td>
-              <td>180</td>
+              <td class="text-center">180</td>
             </tr>
           </tbody>
         </table>
       </div>
       <h2 class="text-2xl font-bold">Start a Custom HIIT Workout:</h2>
       <p class="text-lg font-semibold">Enter the following command into your discord chat:</p>
-      <code class="bg-gray-300 p-0.5 text-gray-900  text-sm font-medium">!myhiit #rounds #high #low #warmup #cooldown exercises...</code>
+      <code class="bg-gray-300 p-0.5 text-gray-900  text-sm font-semibold">!myhiit #rounds #high #low #warmup #cooldown exercises...</code>
       <p class="text-lg font-semibold">Using the following arguments</p>
       <div class="rounded-lg shadow-md inline-block min-w-full">
         <table class="w-full table-auto leading-normal">
@@ -75,42 +78,42 @@
               <th class="text-left text-gray-100 p-1 rounded-tr-lg bg-purple-600">Example</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <tbody class="font-semibold">
+            <tr class="bg-purple-100">
               <td>#rounds</td>
               <td>Number of Rounds</td>
-              <td>5</td>
+              <td class="text-center">5</td>
             </tr>
-            <tr>
+            <tr class="bg-purple-200">
               <td>#high</td>
               <td>Seconds of High-Intensity</td>
-              <td>45</td>
+              <td class="text-center">45</td>
             </tr>
-            <tr>
+            <tr class="bg-purple-100">
               <td>#low</td>
               <td>Seconds of Low-Intensity</td>
-              <td>15</td>
+              <td class="text-center">15</td>
             </tr>
-            <tr>
+            <tr class="bg-purple-200">
               <td>#warmup</td>
               <td>Seconds of Warmup</td>
-              <td>180</td>
+              <td class="text-center">180</td>
             </tr>
-            <tr>
+            <tr class="bg-purple-100">
               <td>#cooldown</td>
               <td>Seconds of Cooldown</td>
-              <td>180</td>
+              <td class="text-center">180</td>
             </tr>
-            <tr>
+            <tr class="bg-purple-200">
               <td>exercises...</td>
               <td>Exercises in the Workout</td>
-              <td>pushups plank</td>
+              <td class="text-center">pushups plank</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-    <div class="bg-gray-100 mr-14 my-10 shadow-2xl p-5 h-3/5">
+    <div class="bg-gray-100 md:ml-7 sm:ml-14 sm:mr-14 mx-7 my-10 shadow-2xl p-5 h-3/5">
       <h1 class="text-2xl font-bold">Demo:</h1>
       <p class="text-lg font-semibold">Coming Soon...</p>
     </div>
