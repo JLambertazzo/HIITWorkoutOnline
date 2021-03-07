@@ -49,8 +49,8 @@ client.on('message', message => {
         }
         if (warmup > 0) {
           connection.play(path.join(__dirname, 'sounds/warmup.ogg'))
-          setTimeout(() => rounds(1), warmup)
         }
+        setTimeout(() => rounds(1), warmup)
         if (cooldown > 0) {
           setTimeout(() => connection.play(path.join(__dirname, 'sounds/cooldown.ogg')), warmup + numRounds * (high + low))
         }
@@ -86,7 +86,7 @@ client.on('message', message => {
             }
           }, high + low)
         }
-        if (warmup > 0) {
+        if (warmup > 0 && workouts.length !== 0) {
           connection.play(path.join(__dirname, 'sounds/warmup.ogg'))
           setTimeout(() => rounds(1), warmup)
         }
@@ -109,11 +109,16 @@ const getWorkouts = async (workouts) => {
       audioConfig: { audioEncoding: 'OGG_OPUS' }
     }
 
-    const file = tmp.fileSync({ postfix: '.ogg' })
-    const [res] = await ttsClient.synthesizeSpeech(req)
-    const writeFile = util.promisify(fs.writeFile)
-    await writeFile(file.name, res.audioContent, 'binary')
-    result.push(file.name)
+    try {
+      const file = tmp.fileSync({ postfix: '.ogg' })
+      const [res] = await ttsClient.synthesizeSpeech(req)
+      const writeFile = util.promisify(fs.writeFile)
+      await writeFile(file.name, res.audioContent, 'binary')
+      result.push(file.name)
+    } catch (error) {
+      console.log(error)
+      return []
+    }
   }
   return result
 }
